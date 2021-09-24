@@ -10,7 +10,7 @@ Associated projects, which are all held together by the [Yatter API](https://git
 
 - [Yatter.UI.ListBuilder](https://github.com/HarrisonOfTheNorth/Yatter.UI.ListBuilder)
 - [Yatter.UI.Blazor.Components](https://github.com/HarrisonOfTheNorth/Yatter.UI.Blazor.Components)
-- [Yatter.Http.ResponsiveHttpClient](https://github.com/HarrisonOfTheNorth/Yatter.Http.ResponsiveHttpClient)
+- [Yatter.Http](https://github.com/HarrisonOfTheNorth/Yatter.Http)
 
 ### Subscript.
 
