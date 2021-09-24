@@ -89,6 +89,8 @@ namespace Yatter.UI.ListBuilder.Serialization
 
             var datatypeDto = JsonConvert.DeserializeObject<DataTypeDto>(json);
 
+            
+            // ToDo: the following YatterSpace is wrong, fix this, accommodating both full namespaces as well as y@tterspace.
             if (datatypeDto == null || !datatypeDto.DataType.ToLower().Equals("yatter"))
             {
                 throw new NotYatterDataTypeException("HarryHotdog.UI.ListBuilder.Serialization.YatterConvert");
