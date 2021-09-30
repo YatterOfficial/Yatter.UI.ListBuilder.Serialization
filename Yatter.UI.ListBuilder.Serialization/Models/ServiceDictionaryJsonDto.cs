@@ -5,6 +5,6 @@ namespace Yatter.UI.ListBuilder.Serialization.Models
 {
     public class ServiceDictionaryJsonDto
     {
-        public string ServiceDictionaryJson { get; set; }
+        public Dictionary<string,string> ServiceDictionary { get; set; }
     }
 }

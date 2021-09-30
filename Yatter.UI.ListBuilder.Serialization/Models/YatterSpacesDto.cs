@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace Yatter.UI.ListBuilder.Serialization.Models
 {
-    public class ItemsJsonDto
+    public class YatterSpacesDto
     {
-        public List<object> Items { get; set; }
+        public Dictionary<string,string> YatterSpaces { get; set; }
     }
 }
+

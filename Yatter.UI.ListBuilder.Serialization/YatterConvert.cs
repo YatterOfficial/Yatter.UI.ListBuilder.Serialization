@@ -85,28 +85,33 @@ namespace Yatter.UI.ListBuilder.Serialization
 
         public static Yatter.UI.ListBuilder.Serialization.Models.Yatter DeserializeYatterJson(string json)
         {
-            var response = new Yatter.UI.ListBuilder.Serialization.Models.Yatter();
+            var yatterDataType = "Yatter.UI.ListBuilder.Serialization.Models.Yatter";
+
+            var yatter = new Yatter.UI.ListBuilder.Serialization.Models.Yatter();
 
             var datatypeDto = JsonConvert.DeserializeObject<DataTypeDto>(json);
 
-            
-            // ToDo: the following YatterSpace is wrong, fix this, accommodating both full namespaces as well as y@tterspace.
-            if (datatypeDto == null || !datatypeDto.DataType.ToLower().Equals("yatter"))
+            if (datatypeDto.DataType.Substring(0, 1).Equals("a") && datatypeDto.DataType.Substring(1, 1).Equals("@"))
             {
-                throw new NotYatterDataTypeException("HarryHotdog.UI.ListBuilder.Serialization.YatterConvert");
+                datatypeDto.DataType = datatypeDto.DataType.Replace("a@", "Yatter.UI.ListBuilder.Serialization.Models.");
+            }
+
+            if (datatypeDto == null || !datatypeDto.DataType.ToLower().Equals(yatterDataType.ToLower()))
+            {
+                throw new NotYatterDataTypeException("Yatter.UI.ListBuilder.Serialization.YatterConvert");
             }
 
             var itemsJsonDto = JsonConvert.DeserializeObject<ItemsJsonDto>(json);
 
             if (itemsJsonDto != null)
             {
-                var itemsjson = itemsJsonDto.ItemsJson;
+                var itemsjson = itemsJsonDto.Items;
 
-                var list = DeserializeYatterListJson(itemsjson);
+                var list = DeserializeYatterListJson(JsonConvert.SerializeObject(itemsjson));
 
                 if (list != null)
                 {
-                    response.Items = list;
+                    yatter.Items = new System.Collections.ObjectModel.ObservableCollection<object>(list);
                 }
             }
 
@@ -114,17 +119,13 @@ namespace Yatter.UI.ListBuilder.Serialization
 
             if (serviceDictionaryJsonDto != null)
             {
-                var serviceDictionaryJson = serviceDictionaryJsonDto.ServiceDictionaryJson;
+                var serviceDictionaryJson = serviceDictionaryJsonDto.ServiceDictionary;
 
-                Dictionary<string, string> serviceDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(serviceDictionaryJson);
+                yatter.ServiceDictionary = serviceDictionaryJson;
 
-                if (serviceDictionary != null)
-                {
-                    response.ServiceDictionary = serviceDictionary;
-                }
             }
 
-            return response;
+            return yatter;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Yatter.UI.ListBuilder.Serialization.Models
 {
@@ -8,7 +9,7 @@ namespace Yatter.UI.ListBuilder.Serialization.Models
         string DataType { get; set; }
         Dictionary<string, string> YatterSpaces { get; set; }
         Dictionary<string, string> ServiceDictionary { get; set; }
-        List<Object> Items { get; set; }
+        ObservableCollection<Object> Items { get; set; }
     }
 }
 
