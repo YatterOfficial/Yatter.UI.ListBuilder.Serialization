@@ -77,6 +77,12 @@ namespace Yatter.UI.ListBuilder.Serialization
                     tmp.DataType = "Yatter.UI.ListBuilder.ListItems.Entry";
                     list.Add(tmp);
                 }
+                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.TextPanel"))
+                {
+                    var tmp = JsonConvert.DeserializeObject<TextPanel>(item.ToString());
+                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.TextPanel";
+                    list.Add(tmp);
+                }
 
             }
 
