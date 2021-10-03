@@ -121,15 +121,16 @@ namespace Yatter.UI.ListBuilder.Serialization
                 }
             }
 
-            var serviceDictionaryJsonDto = JsonConvert.DeserializeObject<ServiceDictionaryJsonDto>(json);
+            ServiceDictionaryJsonDto obj = JsonConvert.DeserializeObject<ServiceDictionaryJsonDto>(json);
 
-            if (serviceDictionaryJsonDto != null)
+            foreach (var key in obj.ServiceDictionary.Keys)
             {
-                var serviceDictionaryJson = serviceDictionaryJsonDto.ServiceDictionary;
-
-                yatter.ServiceDictionary = serviceDictionaryJson;
-
+                Console.WriteLine();
+                Console.WriteLine("y@tter:");
+                Console.WriteLine($"    {key}, {obj.ServiceDictionary[key]}");
             }
+
+            yatter.ServiceDictionary = obj.ServiceDictionary;
 
             return yatter;
         }
