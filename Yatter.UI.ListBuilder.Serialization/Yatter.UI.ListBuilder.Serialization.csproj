@@ -2,21 +2,38 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageVersion>0.0.3</PackageVersion>
+    <Authors>Anthony Harrison</Authors>
+    <Copyright>Anthony Harrison</Copyright>
+    <PackageIconUrl>https://avatars.githubusercontent.com/u/25448533</PackageIconUrl>
+    <NeutralLanguage>en-GB</NeutralLanguage>
+    <PackageLicenseUrl>https://github.com/HarrisonOfTheNorth/Yatter.UI.ListBuilder.Serialization/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Owners>Anthony Harrison</Owners>
+    <PackageProjectUrl>https://github.com/HarrisonOfTheNorth/Yatter.UI.ListBuilder.Serialization</PackageProjectUrl>
+    <PackageReleaseNotes>Alpha Release</PackageReleaseNotes>
+    <Summary>Serialization mechanisms for Yatter</Summary>
+    <PackageTags>Yatter</PackageTags>
+    <Title>Yatter.UI.ListBuilder.Serialization</Title>
+    <Description>Serialization mechanisms for Yatter</Description>
+    <PackageId>Yatter.UI.ListBuilder.Serialization</PackageId>
+    <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Exceptions\" />
     <None Remove="Models\" />
     <None Remove="Newtonsoft.Json" />
+    <None Remove="Yatter.UI.ListBuilder" />
+    <None Remove="Documents\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
     <Folder Include="Models\" />
+    <Folder Include="Archives\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Yatter.UI.ListBuilder\Yatter.UI.ListBuilder\Yatter.UI.ListBuilder.csproj" />
+    <PackageReference Include="Yatter.UI.ListBuilder" Version="0.0.2" />
   </ItemGroup>
 </Project>
