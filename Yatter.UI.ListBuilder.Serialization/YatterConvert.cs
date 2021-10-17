@@ -65,6 +65,12 @@ namespace Yatter.UI.ListBuilder.Serialization
                     tmp.DataType = "Yatter.UI.ListBuilder.ListItems.H5";
                     list.Add(tmp);
                 }
+                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.IconTitle"))
+                {
+                    var tmp = JsonConvert.DeserializeObject<IconTitle>(item.ToString());
+                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.IconTitle";
+                    list.Add(tmp);
+                }
                 else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.Base64Image"))
                 {
                     var tmp = JsonConvert.DeserializeObject<Base64Image>(item.ToString());
