@@ -36,4 +36,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Yatter.UI.ListBuilder" Version="0.0.2" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Yatter.UI.ListBuilder\Yatter.UI.ListBuilder\Yatter.UI.ListBuilder.csproj" />
+  </ItemGroup>
 </Project>

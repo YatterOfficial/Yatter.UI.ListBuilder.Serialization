@@ -83,6 +83,18 @@ namespace Yatter.UI.ListBuilder.Serialization
                     tmp.DataType = "Yatter.UI.ListBuilder.ListItems.TextPanel";
                     list.Add(tmp);
                 }
+                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.WebPage"))
+                {
+                    var tmp = JsonConvert.DeserializeObject<WebPage>(item.ToString());
+                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.WebPage";
+                    list.Add(tmp);
+                }
+                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.YouTubeVideo"))
+                {
+                    var tmp = JsonConvert.DeserializeObject<YouTubeVideo>(item.ToString());
+                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.YouTubeVideo";
+                    list.Add(tmp);
+                }
 
             }
 
