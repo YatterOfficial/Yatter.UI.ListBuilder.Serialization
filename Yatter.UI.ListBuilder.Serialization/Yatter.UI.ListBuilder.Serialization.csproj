@@ -2,20 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageVersion>0.0.3</PackageVersion>
+    <PackageVersion>0.0.4</PackageVersion>
     <Authors>Anthony Harrison</Authors>
     <Copyright>Anthony Harrison</Copyright>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/25448533</PackageIconUrl>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <PackageLicenseUrl>https://github.com/HarrisonOfTheNorth/Yatter.UI.ListBuilder.Serialization/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Owners>Anthony Harrison</Owners>
     <PackageProjectUrl>https://github.com/HarrisonOfTheNorth/Yatter.UI.ListBuilder.Serialization</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>Alpha Release</PackageReleaseNotes>
-    <Summary>Serialization mechanisms for Yatter</Summary>
+    <Summary>Serialization mechanisms for Yatter.UI.ListBuilder.ListItems</Summary>
     <PackageTags>Yatter</PackageTags>
     <Title>Yatter.UI.ListBuilder.Serialization</Title>
-    <Description>Serialization mechanisms for Yatter</Description>
+    <Description>Serialization mechanisms for Yatter.UI.ListBuilder.ListItems</Description>
     <PackageId>Yatter.UI.ListBuilder.Serialization</PackageId>
     <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>
@@ -35,8 +36,15 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Yatter.UI.ListBuilder" Version="0.0.2" />
+    <None Include="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Yatter.UI.ListBuilder\Yatter.UI.ListBuilder\Yatter.UI.ListBuilder.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>true</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 </Project>
