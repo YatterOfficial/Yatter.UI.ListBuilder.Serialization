@@ -8,9 +8,9 @@ This library is designed to facilitate the capacity of lists created by ```Harry
 
 Associated projects, which are all held together by the [Yatter API](https://github.com/HarrisonOfTheNorth/Yatter), are as follows:
 
-- [Yatter.UI.ListBuilder](https://github.com/HarrisonOfTheNorth/Yatter.UI.ListBuilder)
-- [Yatter.UI.Blazor.Components](https://github.com/HarrisonOfTheNorth/Yatter.UI.Blazor.Components)
-- [Yatter.Http](https://github.com/HarrisonOfTheNorth/Yatter.Http)
+- [Yatter.UI.ListBuilder](https://github.com/YatterOfficial/Yatter.UI.ListBuilder)
+- [Yatter.UI.Blazor.Components](https://github.com/YatterOfficial/Yatter.UI.Blazor.Components)
+- [Yatter.Http](https://github.com/YatterOfficial/Yatter.Http)
 
 ### Subscript.
 
