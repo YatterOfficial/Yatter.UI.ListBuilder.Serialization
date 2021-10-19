@@ -4,6 +4,10 @@ We are progressively building this solution from a custom ListView pattern that 
 
 # Yatter.UI.ListBuilder.Serialization
 
+<a href="https://www.nuget.org/packages/Yatter.UI.ListBuilder.Serialization/" target="_blank" rel="noreferrer noopener"><img alt="Nuget" src="https://img.shields.io/nuget/v/Yatter.UI.ListBuilder.Serialization?color=blue&style=for-the-badge"></a>
+
+![GitHub](https://img.shields.io/github/license/yatterofficial/Yatter.UI.ListBuilder.Serialization?style=for-the-badge)
+
 This library is designed to facilitate the capacity of lists created by ```HarryHotdog.UI.ListBuilder``` to be used as remotely-driven lightweight lists that originate as serialized JSON or serialized XML, on any of the following platforms, with such lists having the innate capacity to submit collations of themselves, either to local storage for retrieval by a locally loaded list (such as where a locally-loaded list is being used as a menu), or to a remote endpoint, where the response to such a submission is another list of the same ilk.
 
 Associated projects, which are all held together by the [Yatter API](https://github.com/HarrisonOfTheNorth/Yatter), are as follows:
