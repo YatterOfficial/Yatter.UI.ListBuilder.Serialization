@@ -5,16 +5,16 @@ namespace Yatter.UI.ListBuilder.Serialization.Models
 {
     public class YatterPath
     {
-        public string Base64Icon { set; get; }
-        public string Base64IconType { get; set; }
-        public string Title { get; set; }
-        public string Username { get; set; }
-        public string Path { get; set; }
-        public string PageLoaderKey { get; set; }
-        public string Mnemonic { get; set; }
+        public string Base64Icon { set; get; } = String.Empty;
+        public string Base64IconType { get; set; } = String.Empty;
+        public string Title { get; set; } = String.Empty;
+        public string Username { get; set; } = String.Empty;
+        public string Path { get; set; } = String.Empty;
+        public string PageLoaderKey { get; set; } = String.Empty;
+        public string Mnemonic { get; set; } = String.Empty;
 
         [JsonIgnore]
-        public string Tag { get; set; }
+        public string Tag { get; set; } = String.Empty;
 
         public YatterPath()
         {
@@ -39,7 +39,7 @@ namespace Yatter.UI.ListBuilder.Serialization.Models
         }
 
         [JsonIgnore]
-        public Action<YatterPath> ClickAction { get; set; }
+        public Action<YatterPath> ClickAction { get; set; } = null;
 
         public void OnClick()
         {
