@@ -101,6 +101,19 @@ namespace Yatter.UI.ListBuilder.Serialization
                     tmp.DataType = "Yatter.UI.ListBuilder.ListItems.YouTubeVideo";
                     list.Add(tmp);
                 }
+                else if (dataType.Equals("Yatter.UI.ListBuilder.Serialization.Models.YatNav"))
+                {
+                    var tmp = JsonConvert.DeserializeObject<YatNav>(item.ToString());
+                    tmp.DataType = "Yatter.UI.ListBuilder.Serialization.Models.YatNav";
+                    list.Add(tmp);
+                }
+                else if (dataType.Equals("Yatter.UI.ListBuilder.Serialization.Models.YatterPath"))
+                {
+                    var tmp = JsonConvert.DeserializeObject<YatterPath>(item.ToString());
+                    tmp.DataType = "Yatter.UI.ListBuilder.Serialization.Models.YatterPath";
+                    list.Add(tmp);
+                }
+
 
             }
 
