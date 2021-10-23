@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageVersion>0.0.4</PackageVersion>
+    <PackageVersion>0.0.5</PackageVersion>
     <Authors>Anthony Harrison</Authors>
     <Copyright>Anthony Harrison</Copyright>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/25448533</PackageIconUrl>
@@ -10,9 +10,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Owners>Anthony Harrison</Owners>
-    <PackageProjectUrl>https://github.com/HarrisonOfTheNorth/Yatter.UI.ListBuilder.Serialization</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/YatterOfficial/Yatter.UI.ListBuilder.Serialization</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageReleaseNotes>Alpha Release</PackageReleaseNotes>
+    <PackageReleaseNotes>Alpha Release
+Added YatNav to wrap a List&lt;YatterPath&gt; as clickable MenuItems</PackageReleaseNotes>
     <Summary>Serialization mechanisms for Yatter.UI.ListBuilder.ListItems</Summary>
     <PackageTags>Yatter</PackageTags>
     <Title>Yatter.UI.ListBuilder.Serialization</Title>
