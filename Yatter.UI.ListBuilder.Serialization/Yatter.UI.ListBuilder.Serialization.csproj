@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageVersion>0.0.5</PackageVersion>
+    <PackageVersion>0.0.6</PackageVersion>
     <Authors>Anthony Harrison</Authors>
     <Copyright>Anthony Harrison</Copyright>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/25448533</PackageIconUrl>
