@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageVersion>0.0.6</PackageVersion>
+    <PackageVersion>0.0.7</PackageVersion>
     <Authors>Anthony Harrison</Authors>
     <Copyright>Anthony Harrison</Copyright>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/25448533</PackageIconUrl>
@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/YatterOfficial/Yatter.UI.ListBuilder.Serialization</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>Alpha Release
-Added YatNav to wrap a List&lt;YatterPath&gt; as clickable MenuItems</PackageReleaseNotes>
+ Changed YatterConvert to deserialize using reflection instead of if-else</PackageReleaseNotes>
     <Summary>Serialization mechanisms for Yatter.UI.ListBuilder.ListItems</Summary>
     <PackageTags>Yatter</PackageTags>
     <Title>Yatter.UI.ListBuilder.Serialization</Title>
