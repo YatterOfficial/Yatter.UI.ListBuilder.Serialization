@@ -7,11 +7,15 @@ using Yatter.UI.ListBuilder.Serialization.Models;
 using Yatter.UI.ListBuilder.Serialization.Exceptions;
 
 using System.Reflection;
+using System.Linq;
 
 namespace Yatter.UI.ListBuilder.Serialization
 {
     public static class YatterConvert
     {
+        private static Assembly ListBuilderAssembly { get; set; }
+        private static Assembly SerializationAssembly { get; set; }
+        
         public static List<object> DeserializeYatterListJson(string json)
         {
             var list = new List<object>();
@@ -24,100 +28,59 @@ namespace Yatter.UI.ListBuilder.Serialization
 
                 string dataType = dto.DataType;
 
+
                 if(dataType.Substring(0,1).Equals("y")&& dataType.Substring(1, 1).Equals("@"))
                 {
                     dataType = dataType.Replace("y@", "Yatter.UI.ListBuilder.ListItems.");
                 }
 
-                if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.Label"))
+                if (SerializationAssembly == null)
                 {
-                    var tmp = JsonConvert.DeserializeObject<Label>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.Label";
-                    list.Add(tmp);
+                    SerializationAssembly = Assembly.Load("Yatter.UI.ListBuilder.Serialization");
                 }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.H1"))
+                if (ListBuilderAssembly == null)
                 {
-                    var tmp = JsonConvert.DeserializeObject<H1>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.H1";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.H2"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<H2>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.H2";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.H3"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<H3>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.H3";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.H4"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<H4>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.H4";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.H5"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<H5>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.H5";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.IconTitle"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<IconTitle>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.IconTitle";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.Base64Image"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<Base64Image>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.Base64Image";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.Entry"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<Entry>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.Entry";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.TextPanel"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<TextPanel>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.TextPanel";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.WebPage"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<WebPage>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.WebPage";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.ListItems.YouTubeVideo"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<YouTubeVideo>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.ListItems.YouTubeVideo";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.Serialization.Models.YatNav"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<YatNav>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.Serialization.Models.YatNav";
-                    list.Add(tmp);
-                }
-                else if (dataType.Equals("Yatter.UI.ListBuilder.Serialization.Models.YatterPath"))
-                {
-                    var tmp = JsonConvert.DeserializeObject<YatterPath>(item.ToString());
-                    tmp.DataType = "Yatter.UI.ListBuilder.Serialization.Models.YatterPath";
-                    list.Add(tmp);
+                    ListBuilderAssembly = Assembly.Load("Yatter.UI.ListBuilder");
                 }
 
+                Type type = null;
 
+                if (dataType.Contains("Yatter.UI.ListBuilder.Serialization"))
+                {
+                    type = SerializationAssembly.GetType(dataType);
+                }
+                else if (dataType.Contains("Yatter.UI.ListBuilder"))
+                {
+                    type = ListBuilderAssembly.GetType(dataType);
+                }
+
+                list.Add(Deserialize(type, dataType, item.ToString()));
             }
 
             return list;
+        }
+
+        private static object Deserialize(Type type, string dataType, string json)
+        {
+            object result = null;
+
+            try
+            {
+                var methodInfo = typeof(JsonConvert)
+                    .GetMethods()
+                    .Where(x => x.Name == "DeserializeObject")
+                    .FirstOrDefault(x => x.IsGenericMethod);
+
+                var genericMethodInfo = methodInfo.MakeGenericMethod(type);
+                result = genericMethodInfo.Invoke(null, new object[] { json });
+                ((IDataType)result).DataType = dataType; // accounts for where original was in the form of an x@ YatterSpace
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"y@tter: EXCEPTION thrown in Yatter.UI.ListBuilder.Serialization: Exception thrown in Deserialize method: {ex.Message} ");
+            }
+
+            return result;
         }
 
         public static Yatter.UI.ListBuilder.Serialization.Models.Yatter DeserializeYatterJson(string json)
