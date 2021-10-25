@@ -29,3 +29,5 @@ It comes from the 'Y' (meaning _yatter_) component of our HARRY API, which stand
 This actually describes the request/response conversation of our highly atomic, readily reactive, lists!
 
 _Yatter is so powerful that we expect that in time, the whole HARRY API that is around yatter will come to be known as Yatter!_
+
+y@R and You-At-A-Resource are trademarks of Count Anthony Harrison, operating from the United Kingdom
