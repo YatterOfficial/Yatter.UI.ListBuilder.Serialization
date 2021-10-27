@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageVersion>0.0.7</PackageVersion>
+    <PackageVersion>0.0.8</PackageVersion>
     <Authors>Anthony Harrison</Authors>
     <Copyright>Anthony Harrison</Copyright>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/25448533</PackageIconUrl>
@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/YatterOfficial/Yatter.UI.ListBuilder.Serialization</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>Alpha Release
- Changed YatterConvert to deserialize using reflection instead of if-else</PackageReleaseNotes>
+    Added Document and Magazine archive, missing since 0.0.4</PackageReleaseNotes>
     <Summary>Serialization mechanisms for Yatter.UI.ListBuilder.ListItems</Summary>
     <PackageTags>Yatter</PackageTags>
     <Title>Yatter.UI.ListBuilder.Serialization</Title>
@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Yatter.UI.ListBuilder" Version="0.0.2" />
+    <PackageReference Include="Yatter.UI.ListBuilder" Version="0.0.4" />
     <None Include="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
